@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8709850264380508221}
   - component: {fileID: 1372861807985810596}
   m_Layer: 0
-  m_Name: RoadWhite
+  m_Name: RoadOrange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 5104778234207395465}
   - component: {fileID: 8166789434670422097}
   - component: {fileID: 5825410888460037970}
+  - component: {fileID: 1030820851303203442}
   m_Layer: 0
   m_Name: ChangeWall
   m_TagString: ChangeWhite
@@ -198,6 +199,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 5.1218977, z: 1}
   m_Center: {x: 0, y: 2.0609493, z: 0}
+--- !u!114 &1030820851303203442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115432443684817809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ea0a92cafdcd64e9e74bec7c850433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: Orange
 --- !u!1001 &8058710772112542215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,12 +232,17 @@ PrefabInstance:
     - target: {fileID: 4112138706164437314, guid: f99796a3ac76ca34b81b6df82febe84d,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 1
+      value: 0.59836286
       objectReference: {fileID: 0}
     - target: {fileID: 4112138706164437314, guid: f99796a3ac76ca34b81b6df82febe84d,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112138706164437314, guid: f99796a3ac76ca34b81b6df82febe84d,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 8621577848111896939, guid: f99796a3ac76ca34b81b6df82febe84d,
         type: 3}

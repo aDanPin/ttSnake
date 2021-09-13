@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 8634204067972787581}
   - component: {fileID: 3659485428154150840}
   - component: {fileID: 5493745942417036268}
+  - component: {fileID: 3365564389269549318}
   m_Layer: 0
   m_Name: ChangeWall
   m_TagString: ChangeGreen
@@ -198,6 +199,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 5.1218977, z: 1}
   m_Center: {x: 0, y: 2.0609493, z: 0}
+--- !u!114 &3365564389269549318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3883404567654889451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ea0a92cafdcd64e9e74bec7c850433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: Green
 --- !u!1001 &5425260843100090252
 PrefabInstance:
   m_ObjectHideFlags: 0
