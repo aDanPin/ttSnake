@@ -5,10 +5,13 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private SnakeMovingManager _smm;
+    private SnakeTail _st;
 
     private void Start() {
         _smm = GameObject.FindWithTag("Snake")
-                    .GetComponent<SnakeMovingManager>();        
+                    .GetComponent<SnakeMovingManager>();
+        _st = GameObject.FindWithTag("Snake")
+                    .GetComponent<SnakeTail>();
     }
 
     void Update()
@@ -17,10 +20,16 @@ public class InputManager : MonoBehaviour
         {
             _smm.MoveLeft();
         }
-
         if (Input.GetKey(KeyCode.RightArrow))
         {
             _smm.MoveRight();
-        }       
+        }
+        if(Input.GetKeyDown(KeyCode.A)){
+            _st.AddNode();
+        }
+        if(Input.GetKeyDown(KeyCode.Q)){
+            _st.RemoveNode();
+        }
+
     }
 }
