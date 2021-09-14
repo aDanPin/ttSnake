@@ -15,8 +15,6 @@ public class SnakeTail : MonoBehaviour
     {
         _positions.Add(snakeHead.position);
         AddNode();
-        AddNode();
-        AddNode();
     }
 
     private void Start() {
@@ -47,8 +45,8 @@ public class SnakeTail : MonoBehaviour
 
     public void AddNode()
     {
-        Transform circle = Instantiate(snakeNode, _positions[_positions.Count - 1], Quaternion.identity, transform)
-                               .transform;
+        Transform circle = Instantiate(snakeHead, _positions[_positions.Count - 1], Quaternion.identity, transform)
+                               ;
         _snakeNodes.Add(circle);
         _positions.Add(circle.position);
     }

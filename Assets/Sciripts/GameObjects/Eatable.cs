@@ -24,4 +24,8 @@ public class Eatable : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnDestroy() {
+        GameEventsSystem.current.onSnakeBite -= Eating;
+    }
 }

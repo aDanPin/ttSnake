@@ -7,18 +7,11 @@ public class SnakeColorManager : MonoBehaviour
     public Material yellow, purple, blue,
                     orange, green, red;
     private MeshRenderer _mr;
+
     void Start()
     {
         GameEventsSystem.current.onColorChangeTriggerEnter += ChangeColor;
-
-        _mr = GetComponent<MeshRenderer>();
-    }
-
-    private void Update() {
-        if(_mr.material == null)
-            Debug.Log("null 2");
-        if ( _mr == null)
-            Debug.Log("null 1");
+        _mr = GetComponent<MeshRenderer>();        
     }
 
     private void ChangeColor(Color color) {
@@ -63,5 +56,9 @@ public class SnakeColorManager : MonoBehaviour
     }
     private void ChangeColorToRed() {
         _mr.material = red;
+    }
+
+    private void OnDestroy() {
+        GameEventsSystem.current.onColorChangeTriggerEnter -= ChangeColor;
     }
 }
