@@ -18,4 +18,11 @@ public class GameEventsSystem : MonoBehaviour
         }
     }
 
+    public event Action<int, Color> onSnakeBite;
+    public void SnakeBiteTriggerEnter(int id, Color color) {
+        if(onSnakeBite != null) {
+            onSnakeBite(id, color);
+        }
+    }
+
 }
