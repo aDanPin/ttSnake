@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class SnakeBite : MonoBehaviour
 {
     public Color currentColor;
+    public float faverDuration;
+    private float actualFaverDuration;
     private int diamondQueue;
     private int score = 0, dimonds = 0;
+    private bool isFaverOn = false;
 
     void Start()
     {
@@ -15,15 +18,28 @@ public class SnakeBite : MonoBehaviour
         GameEventsSystem.current.onColorChangeTriggerEnter += ChangeColor;
     }
 
+    private void Update() {
+        if(isFaverOn) {
+            actualFaverDuration -= Time.deltaTime;
+            
+            if(actualFaverDuration < 0)
+                DisableFaver();
+        }
+    }
+
     private void Bite(int id, Color color) {
-        if(color == Color.diamond) {
-            EatDiamond();
-        }
-        else if (color == currentColor) {
+        if (isFaverOn) {
             EatCurrentColor();
-        }
-        else {
-            Restart();
+        } else {
+            if(color == Color.diamond) {
+                EatDiamond();
+            }
+            else if (color == currentColor) {
+                EatCurrentColor();
+            }
+            else {
+                Restart();
+            }
         }
     }
 
@@ -43,7 +59,14 @@ public class SnakeBite : MonoBehaviour
     }
 
     private void ActivateFaver() {
+        isFaverOn = true;
+        actualFaverDuration = faverDuration;
+        GameEventsSystem.current.FaverStart();
+    }
 
+    private void DisableFaver() {
+        isFaverOn = false;
+        GameEventsSystem.current.FaverEnd();
     }
 
     private void EatCurrentColor() {

@@ -32,4 +32,18 @@ public class GameEventsSystem : MonoBehaviour
         }
     }
 
+    public event Action onFaverStart;
+    public void FaverStart() {
+        if(onFaverStart != null) {
+            onFaverStart();
+        }
+    }
+
+    public event Action onFaverEnd;
+    public void FaverEnd() {
+        if(onFaverEnd != null) {
+            onFaverEnd();
+        }
+    }
+
 }
