@@ -25,4 +25,11 @@ public class GameEventsSystem : MonoBehaviour
         }
     }
 
+    public event Action<int, int> onScoreUpdate;
+    public void ScoreUpdate(int dimonds, int score) {
+        if(onScoreUpdate != null) {
+            onScoreUpdate(dimonds, score);
+        }
+    }
+
 }

@@ -7,7 +7,7 @@ public class SnakeBite : MonoBehaviour
 {
     public Color currentColor;
     private int diamondQueue;
-    private int score;
+    private int score = 0, dimonds = 0;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class SnakeBite : MonoBehaviour
     private void Bite(int id, Color color) {
         if(color == Color.diamond) {
             EatDiamond();
-        } 
+        }
         else if (color == currentColor) {
             EatCurrentColor();
         }
@@ -37,6 +37,9 @@ public class SnakeBite : MonoBehaviour
             diamondQueue = 0;
             ActivateFaver();
         }
+
+        dimonds++;
+        GameEventsSystem.current.ScoreUpdate(dimonds, score);
     }
 
     private void ActivateFaver() {
@@ -45,7 +48,9 @@ public class SnakeBite : MonoBehaviour
 
     private void EatCurrentColor() {
         diamondQueue = 0;
-        score ++;
+        score++;
+
+        GameEventsSystem.current.ScoreUpdate(dimonds, score);
     }
 
     private void Restart() {
