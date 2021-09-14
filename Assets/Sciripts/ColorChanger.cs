@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorChanger : MonoBehaviour
 {
-    public string color;
+    public Color color;
     private void OnTriggerEnter(Collider other) {
         GameEventsSystem.current.ColorChangeTriggerEnter(color);
     }

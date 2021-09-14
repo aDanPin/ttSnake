@@ -14,24 +14,24 @@ public class SnakeColorManager : MonoBehaviour
         _mr = GetComponent<MeshRenderer>();
     }
 
-    private void ChangeColor(string color) {
+    private void ChangeColor(Color color) {
         switch(color) {
-            case "Yellow":
+            case Color.yellow:
                 ChangeColorToYellow();
                 break;
-            case "Blue":
+            case Color.blue:
                 ChangeColorToBlue();
                 break;
-            case "Green":
+            case Color.green:
                 ChangeColorToGreen();
                 break;
-            case "Purple":
+            case Color.purple:
                 ChangeColorToPurple();
                 break;
-            case "Red":
+            case Color.red:
                 ChangeColorToRed();
                 break;
-            case "Orange":
+            case Color.orange:
                 ChangeColorToOrange();
                 break;
             default: break;

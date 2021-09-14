@@ -11,8 +11,8 @@ public class GameEventsSystem : MonoBehaviour
         current = this;
     }
 
-    public event Action<String> onColorChangeTriggerEnter;
-    public void ColorChangeTriggerEnter(string color) {
+    public event Action<Color> onColorChangeTriggerEnter;
+    public void ColorChangeTriggerEnter(Color color) {
         if(onColorChangeTriggerEnter != null) {
             onColorChangeTriggerEnter(color);
         }
