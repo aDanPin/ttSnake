@@ -8,12 +8,16 @@ public class SnakeTail : MonoBehaviour
     public GameObject snakeNode;
     public float validDelta;
 
-    private List<Transform> _snakeNodes = new List<Transform>();
+    public List<Transform> _snakeNodes = new List<Transform>();
     private List<Vector3> _positions = new List<Vector3>();
 
     private void Awake()
     {
         _positions.Add(snakeHead.position);
+        AddNode();
+        AddNode();
+        AddNode();
+        AddNode();
         AddNode();
     }
 
@@ -54,6 +58,12 @@ public class SnakeTail : MonoBehaviour
     public void RemoveNode()
     {
         if ( _snakeNodes.Count > 0) {
+            for (int i = _snakeNodes.Count - 1; i > 0 ; --i)
+            {
+                _snakeNodes[i].position = Vector3.Lerp(_snakeNodes[i - 1].position, _snakeNodes[i].position, 0.2f);
+                _positions[i + 1] = _snakeNodes[i].position;
+            }
+
             Destroy(_snakeNodes[0].gameObject);
             _snakeNodes.RemoveAt(0);
             _positions.RemoveAt(1);
