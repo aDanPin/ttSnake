@@ -6,6 +6,8 @@ public class InputManager : MonoBehaviour
 {
     private SnakeMovingManager _smm;
     private SnakeTail _st;
+    private float _WIDTH;
+
 
     private bool isFaver = false;
 
@@ -14,6 +16,8 @@ public class InputManager : MonoBehaviour
                     .GetComponent<SnakeMovingManager>();
         _st = GameObject.FindWithTag("Snake")
                     .GetComponent<SnakeTail>();
+
+        _WIDTH  = Screen.width;
 
         GameEventsSystem.current.onFaverStart += OnFaverStart;
         GameEventsSystem.current.onFaverEnd += OnFaverEnd;
@@ -30,20 +34,14 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         if(!isFaver) {
-            if (Input.GetKey(KeyCode.LeftArrow))
+        foreach(Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Moved)
             {
-                _smm.MoveLeft();
+                Vector3 deltaVector = touch.deltaPosition;
+                _smm.MoveByDelta(deltaVector.x / _WIDTH);
             }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                _smm.MoveRight();
-            }
-            if(Input.GetKeyDown(KeyCode.A)){
-                _st.AddNode();
-            }
-            if(Input.GetKeyDown(KeyCode.Q)){
-                _st.RemoveNode();
-            }
+        }
         }
     }
 }

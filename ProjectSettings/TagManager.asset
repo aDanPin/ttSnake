@@ -11,6 +11,7 @@ TagManager:
   - ChangeBlue
   - ChangeGreen
   - Snake
+  - Head
   layers:
   - Default
   - TransparentFX

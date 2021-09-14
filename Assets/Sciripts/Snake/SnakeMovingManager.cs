@@ -33,15 +33,34 @@ public class SnakeMovingManager : MonoBehaviour
                                 * speed * Time.deltaTime;
     }
 
-    public void MoveLeft() {
-        Vector3 nextPosition = transform.position + _leftDirection * lateralSpeed * Time.deltaTime;
+    public void MoveByDelta(float delta) {
+        if(delta < 0)
+            MoveLeft(Mathf.Abs(delta));
+        else
+            MoveRight(Mathf.Abs(delta));
+    }
+
+    public void MoveLeft(float delta) {
+        Vector3 nextPosition = transform.position + _leftDirection * delta
+                                                    * lateralSpeed;
         if(maxLateralDelta - Mathf.Abs(nextPosition.z) > 0 ) {
             transform.position = nextPosition;
+        } else {
+            nextPosition = transform.position;
+            nextPosition.z = -maxLateralDelta;
+
+            transform.position = nextPosition;            
         }
     }
-    public void MoveRight() {
-        Vector3 nextPosition = transform.position + _rightDirection * lateralSpeed * Time.deltaTime;
+    public void MoveRight(float delta) {
+        Vector3 nextPosition = transform.position + _rightDirection * delta
+                                                    * lateralSpeed;
         if(maxLateralDelta - Mathf.Abs(nextPosition.z) > 0 ) {
+            transform.position = nextPosition;
+        } else {
+            nextPosition = transform.position;
+            nextPosition.z = -maxLateralDelta;
+
             transform.position = nextPosition;
         }
     }

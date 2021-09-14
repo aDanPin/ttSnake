@@ -25,6 +25,27 @@ public class GameEventsSystem : MonoBehaviour
         }
     }
 
+    public event Action onSnakeGain;
+    public void SnakeGain() {
+        if(onSnakeBite != null) {
+            onSnakeGain();
+        }
+    }
+
+    public event Action onSnakeErose;
+    public void SnakeErose() {
+        if(onSnakeBite != null) {
+            onSnakeErose();
+        }
+    }
+
+    public event Action onSceneReloadTrigger;
+    public void SceneReload(){
+        if(onSceneReloadTrigger != null) {
+            onSceneReloadTrigger();
+        }
+    }
+
     public event Action<int, int> onScoreUpdate;
     public void ScoreUpdate(int dimonds, int score) {
         if(onScoreUpdate != null) {

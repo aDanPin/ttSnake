@@ -14,6 +14,13 @@ public class SnakeColorManager : MonoBehaviour
         _mr = GetComponent<MeshRenderer>();
     }
 
+    private void Update() {
+        if(_mr.material == null)
+            Debug.Log("null 2");
+        if ( _mr == null)
+            Debug.Log("null 1");
+    }
+
     private void ChangeColor(Color color) {
         switch(color) {
             case Color.yellow:

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SnakeTail : MonoBehaviour
 {
     public Transform snakeHead;
+    public GameObject snakeNode;
     public float validDelta;
 
     private List<Transform> _snakeNodes = new List<Transform>();
@@ -14,6 +15,13 @@ public class SnakeTail : MonoBehaviour
     {
         _positions.Add(snakeHead.position);
         AddNode();
+        AddNode();
+        AddNode();
+    }
+
+    private void Start() {
+        GameEventsSystem.current.onSnakeGain += AddNode;
+        GameEventsSystem.current.onSnakeErose += RemoveNode;
     }
 
     private void Update()
@@ -39,7 +47,8 @@ public class SnakeTail : MonoBehaviour
 
     public void AddNode()
     {
-        Transform circle = Instantiate(snakeHead, _positions[_positions.Count - 1], Quaternion.identity, transform);
+        Transform circle = Instantiate(snakeNode, _positions[_positions.Count - 1], Quaternion.identity, transform)
+                               .transform;
         _snakeNodes.Add(circle);
         _positions.Add(circle.position);
     }
@@ -50,6 +59,8 @@ public class SnakeTail : MonoBehaviour
             Destroy(_snakeNodes[0].gameObject);
             _snakeNodes.RemoveAt(0);
             _positions.RemoveAt(1);
+        } else {
+            GameEventsSystem.current.SceneReload();
         }
     }
 }

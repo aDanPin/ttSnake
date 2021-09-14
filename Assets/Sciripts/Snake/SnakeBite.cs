@@ -78,9 +78,10 @@ public class SnakeBite : MonoBehaviour
         score++;
 
         GameEventsSystem.current.ScoreUpdate(dimonds, score);
+        GameEventsSystem.current.SnakeGain();
     }
 
     private void Restart() {
-        SceneManager.LoadScene("SampleScene");        
+        GameEventsSystem.current.SceneReload();
     }
 }
