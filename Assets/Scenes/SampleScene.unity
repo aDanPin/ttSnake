@@ -2672,7 +2672,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 300394193}
-  - component: {fileID: 300394190}
   - component: {fileID: 300394191}
   - component: {fileID: 300394189}
   - component: {fileID: 300394188}
@@ -2700,6 +2699,7 @@ MonoBehaviour:
   snakeNode: {fileID: 9077069824133104447, guid: a6a99ec87165ab14c858132c61fc173d,
     type: 3}
   validDelta: 1
+  _snakeNodes: []
 --- !u!114 &300394189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2717,19 +2717,6 @@ MonoBehaviour:
   faverSpeedScale: 3
   lateralSpeed: 20
   maxLateralDelta: 4.6
---- !u!65 &300394190
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300394187}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.80793, y: 1, z: 0.9545522}
-  m_Center: {x: 0.096035, y: 0, z: 1.1978428}
 --- !u!54 &300394191
 Rigidbody:
   m_ObjectHideFlags: 0
