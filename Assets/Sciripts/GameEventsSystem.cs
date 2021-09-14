@@ -25,6 +25,13 @@ public class GameEventsSystem : MonoBehaviour
         }
     }
 
+    public event Action<int> onSnakeEate;
+    public void SnakeEatTriggerEnter(int id) {
+        if(onSnakeBite != null) {
+            onSnakeEate(id);
+        }
+    }
+
     public event Action onSnakeGain;
     public void SnakeGain() {
         if(onSnakeBite != null) {

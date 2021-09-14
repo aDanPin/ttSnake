@@ -30,16 +30,16 @@ public class SnakeBite : MonoBehaviour
 
     private void Bite(int id, Color color) {
         if (isFaverOn) {
-            EatCurrentColor();
+            EatCurrentColor(id);
         } else {
             if(color == Color.diamond) {
-                EatDiamond();
+                EatDiamond(id);
             }
             else if (color == currentColor) {
-                EatCurrentColor();
+                EatCurrentColor(id);
             }
-            else {
-                Restart();
+            else if (color != Color.black) { // Its a different colot capsule
+                GameEventsSystem.current.SceneReload();
             }
         }
     }
@@ -48,7 +48,7 @@ public class SnakeBite : MonoBehaviour
         currentColor = color;
     }
 
-    private void EatDiamond() {
+    private void EatDiamond(int id) {
         diamondQueue++;
         if(diamondQueue > maxDimondsQueue) {
             diamondQueue = 0;
@@ -57,6 +57,7 @@ public class SnakeBite : MonoBehaviour
 
         dimonds++;
         GameEventsSystem.current.ScoreUpdate(dimonds, score);
+        GameEventsSystem.current.SnakeEatTriggerEnter(id);
     }
 
     private void ActivateFaver() {
@@ -73,12 +74,13 @@ public class SnakeBite : MonoBehaviour
         GameEventsSystem.current.ScoreUpdate(dimonds, score);
     }
 
-    private void EatCurrentColor() {
+    private void EatCurrentColor(int id) {
         diamondQueue = 0;
         score++;
 
         GameEventsSystem.current.ScoreUpdate(dimonds, score);
         GameEventsSystem.current.SnakeGain();
+        GameEventsSystem.current.SnakeEatTriggerEnter(id);
     }
 
     private void Restart() {

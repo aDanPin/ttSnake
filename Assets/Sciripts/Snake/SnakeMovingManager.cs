@@ -59,7 +59,7 @@ public class SnakeMovingManager : MonoBehaviour
             transform.position = nextPosition;
         } else {
             nextPosition = transform.position;
-            nextPosition.z = -maxLateralDelta;
+            nextPosition.z = maxLateralDelta;
 
             transform.position = nextPosition;
         }

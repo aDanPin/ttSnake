@@ -12,20 +12,20 @@ public class Eatable : MonoBehaviour
         localId = globalId;
         ++globalId;
 
-        GameEventsSystem.current.onSnakeBite += Eating;
+        GameEventsSystem.current.onSnakeEate += Eating;
     }
 
     private void OnTriggerEnter(Collider other) {
         GameEventsSystem.current.SnakeBiteTriggerEnter(localId, color);
     }
 
-    public void Eating(int id, Color color) {
+    public void Eating(int id) {
         if(id == localId) {
             Destroy(gameObject);
         }
     }
 
     private void OnDestroy() {
-        GameEventsSystem.current.onSnakeBite -= Eating;
+        GameEventsSystem.current.onSnakeEate -= Eating;
     }
 }
