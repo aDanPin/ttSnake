@@ -7,6 +7,7 @@ public class SnakeBite : MonoBehaviour
 {
     public Color currentColor;
     public float faverDuration;
+    public int maxDimondsQueue = 3;
     private float actualFaverDuration;
     private int diamondQueue;
     private int score = 0, dimonds = 0;
@@ -49,7 +50,7 @@ public class SnakeBite : MonoBehaviour
 
     private void EatDiamond() {
         diamondQueue++;
-        if(diamondQueue == 3) {
+        if(diamondQueue > maxDimondsQueue) {
             diamondQueue = 0;
             ActivateFaver();
         }
@@ -67,6 +68,9 @@ public class SnakeBite : MonoBehaviour
     private void DisableFaver() {
         isFaverOn = false;
         GameEventsSystem.current.FaverEnd();
+
+        dimonds = 0;
+        GameEventsSystem.current.ScoreUpdate(dimonds, score);
     }
 
     private void EatCurrentColor() {

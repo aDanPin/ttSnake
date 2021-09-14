@@ -451,7 +451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentColor: 2
-  faverDuration: 3
+  faverDuration: 5
+  maxDimondsQueue: 3
 --- !u!4 &300394193
 Transform:
   m_ObjectHideFlags: 0
